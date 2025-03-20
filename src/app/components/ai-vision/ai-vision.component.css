@@ -1,0 +1,43 @@
+/* Outer container that centers the outer box */
+.outer-container {
+  display: flex;
+  justify-content: center; /* Horizontally center the outer box */
+  align-items: center;     /* Vertically center the outer box */
+  height: 100vh;           /* Full height of the viewport */
+  background-color: #e0e0e0;  /* Light gray background */
+  width: 100%;             /* Ensure it takes up the full width of the viewport */
+}
+
+/* Outer box will be twice the size of the inner box */
+.outer-box {
+  width: 600px;   /* 2x the width of the inner box */
+  height: 95%;  /* 2x the height of the inner box */
+  position: relative; /* Position inner box relative to this */
+  background-color: #f0f0f0; /* Light gray for distinction */
+  border-radius: 10px; /* Rounded corners for the outer box */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Inner container (box) centered horizontally at the top of the outer box */
+.container {
+  position: absolute;  /* Use absolute positioning */
+  top: 5%;              /* Align to the top of the outer box */
+  left: 50%;           /* Horizontally center the inner box */
+  transform: translateX(-50%);  /* Adjust to truly center it */
+  display: flex;
+  justify-content: center; /* Horizontally center the image */
+  align-items: center;     /* Vertically center the image */
+  width: 300px;            /* Fixed width for the inner box */
+  height: 200px;           /* Fixed height for the inner box */
+  padding: 20px;           /* Padding inside the container */
+  background-color: white; /* White background for the inner box */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  border-radius: 10px;     /* Rounded corners */
+}
+
+/* Image styles for responsiveness */
+.image-box img {
+  max-width: 100%;          /* Image will scale to fit the container width */
+  max-height: 100%;         /* Image will scale to fit the container height */
+  border-radius: 5px;       /* Optional rounded corners for the image */
+}
