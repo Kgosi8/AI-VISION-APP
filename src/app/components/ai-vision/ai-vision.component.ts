@@ -16,7 +16,7 @@ import { NgIf } from '@angular/common';
 export class AiVisionComponent {
 
   // URL for the image (this can be dynamically set)
-  imageUrl: string = 'assets/brain.jpg';
+  imageUrl: string = 'assets/pickImage.jpg';
   selectedImage: string | ArrayBuffer | null = null;
 
   getDescription() {
