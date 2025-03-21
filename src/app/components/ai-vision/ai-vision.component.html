@@ -5,6 +5,8 @@
           <img [src]="imageUrl" alt="Centered Image" />
           <button (click)="getDescription()">Take Photo </button>
           <button (click)="getDescription()">Pick from Gallery </button>
+          <input type="file" #fileInput accept="image/*" (change)="onFileSelected($event)" hidden>
+          <img *ngIf="selectedImage" [src]="selectedImage" alt="Selected Image" width="200">
         </div>
         
       </div>
