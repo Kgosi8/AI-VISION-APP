@@ -1,43 +1,117 @@
-/* Outer container that centers the outer box */
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f8fa; /* Soft, light background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Outer Container */
 .outer-container {
   display: flex;
-  justify-content: center; /* Horizontally center the outer box */
-  align-items: center;     /* Vertically center the outer box */
-  height: 100vh;           /* Full height of the viewport */
-  background-color: #e0e0e0;  /* Light gray background */
-  width: 100%;             /* Ensure it takes up the full width of the viewport */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(24, 30, 221, 0.05); /* Light overlay */
 }
-
-/* Outer box will be twice the size of the inner box */
-.outer-box {
-  width: 600px;   /* 2x the width of the inner box */
-  height: 95%;  /* 2x the height of the inner box */
-  position: relative; /* Position inner box relative to this */
-  background-color: #f0f0f0; /* Light gray for distinction */
-  border-radius: 10px; /* Rounded corners for the outer box */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-/* Inner container (box) centered horizontally at the top of the outer box */
-.container {
-  position: absolute;  /* Use absolute positioning */
-  top: 5%;              /* Align to the top of the outer box */
-  left: 50%;           /* Horizontally center the inner box */
-  transform: translateX(-50%);  /* Adjust to truly center it */
+.response-container{
+  size: 50%;
   display: flex;
-  justify-content: center; /* Horizontally center the image */
-  align-items: center;     /* Vertically center the image */
-  width: 300px;            /* Fixed width for the inner box */
-  height: 200px;           /* Fixed height for the inner box */
-  padding: 20px;           /* Padding inside the container */
-  background-color: white; /* White background for the inner box */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  border-radius: 10px;     /* Rounded corners */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(24, 30, 221, 0.05); /* Light overlay */
 }
 
-/* Image styles for responsiveness */
+
+
+/* Box Around Content */
+.outer-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: white; /* Clean white background */
+  border-radius: 15px;  /* Rounded corners */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.outer-box:hover {
+  transform: scale(1.03); /* Slight zoom-in on hover */
+}
+
+/* Image Box */
+.image-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px; /* Space between image and buttons */
+}
+
 .image-box img {
-  max-width: 100%;          /* Image will scale to fit the container width */
-  max-height: 100%;         /* Image will scale to fit the container height */
-  border-radius: 5px;       /* Optional rounded corners for the image */
+  width: 100%;
+  max-width: 350px; /* Limit the image size */
+  height: auto;
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Soft shadow around image */
+  transition: transform 0.3s ease; /* Smooth transition for zoom effect */
+}
+
+.image-box img:hover {
+  transform: scale(1.05); /* Slight zoom-in effect on hover */
+}
+
+/* Button Styling */
+button {
+  background-color:rgba(84, 79, 79, 0.975); /* Vibrant blue background */
+  color: white; /* White text */
+  padding: 15px 30px;
+  margin: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px; /* Fully rounded buttons */
+  cursor: pointer;
+  width: 250px;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-4px); /* Button lift effect on hover */
+}
+
+button:active {
+  transform: translateY(0); /* Reset button lift on click */
+}
+
+/* Responsive Design: For smaller screens */
+@media (max-width: 768px) {
+  .outer-box {
+    width: 90%; /* Box takes up most of the screen on mobile */
+    padding: 15px;
+  }
+
+  .image-box img {
+    max-width: 80%; /* Ensure the image fits nicely on smaller screens */
+  }
+
+  button {
+    width: 100%; /* Full width buttons on mobile */
+    font-size: 14px; /* Smaller text for mobile devices */
+  }
 }
