@@ -1,11 +1,17 @@
+
+
+
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClaudeServiceService {
   baseUrl: string="http://api.anthropic.com/v1/messages";
-  apiKey: string='Your api-key';
+  apiKey: string="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";
  
   base64Image: string | undefined;  // To store the base64 string of the image
 
@@ -27,7 +33,17 @@ export class ClaudeServiceService {
     }
   }
 
-  constructor() { 
-    this.changeToBase64();
+
+  constructor(private http: HttpClient) {}
+
+  analyzeImage(imageData: File): Observable<any> {
+	const formData = new FormData();
+	formData.append('file', imageData);
+
+	const headers = new HttpHeaders({
+	'x-api-key': this.apiKey,
+	'anthropic-version': '2023-06-01',
+ });
+ 	return this.http.post<any>(this.baseUrl, formData, { headers });
   }
 }

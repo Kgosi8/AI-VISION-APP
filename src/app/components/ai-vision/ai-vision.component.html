@@ -3,10 +3,12 @@
       <div class="container">
         <div class="image-box">
           <img [src]="imageUrl" alt="Centered Image" />
-          <button (click)="getDescription()">Take Photo </button>
-          <button (click)="getDescription()">Pick from Gallery </button>
-          <input type="file" #fileInput accept="image/*" (change)="onFileSelected($event)" hidden>
-          <img *ngIf="selectedImage" [src]="selectedImage" alt="Selected Image" width="200">
+          <button (click)="uploadImage()"
+	  >Take Photo </button>
+          <button (click)="uploadImage()">Pick from Gallery </button>
+          <input type="file" (change)="onFileSelected($event)" />
+          <h2>Image Description:</h2>
+	  <p>{{ description }}</p>
         </div>
         
       </div>

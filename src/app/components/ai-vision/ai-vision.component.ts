@@ -1,8 +1,10 @@
+
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders, httpResource } from '@angular/common/http';
 import { ClaudeServiceService } from '../../services/claude-service.service';
 import { Observable } from 'rxjs';
 import { NgIf } from '@angular/common';
+
 
 
 
@@ -16,13 +18,20 @@ import { NgIf } from '@angular/common';
 export class AiVisionComponent {
 
   // URL for the image (this can be dynamically set)
-  imageUrl: string = 'assets/pickImage.jpg';
+
+	imageUrl: string = 'assets/pickImage.jpg';
   selectedImage: string | ArrayBuffer | null = null;
+  description: string = '';
+  selectedFile!: File;
+
+
+  constructor(private claudeServiceService: ClaudeServiceService) {}
 
   getDescription() {
     const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
     fileInput.click(); // Open file picker
   }
+
 
   onFileSelected(event: Event) {
     const input = event.target as HTMLInputElement;
@@ -37,7 +46,21 @@ export class AiVisionComponent {
       reader.readAsDataURL(file);
     }
   }
-}
+
+  onImageSelected(event: any) {
+	this.selectedFile = event.target.files[0];
+	}
+
+  uploadImage() {
+	if (this.selectedFile) {
+		 this.claudeServiceService.analyzeImage(this.selectedFile).subscribe( (response) =>{
+			this.description = response.description;
+	}, (error) => {
+		 console.error('Error analyzing image:', error);
+												        });
+													}
+
+}}
       
       
   
