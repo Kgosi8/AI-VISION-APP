@@ -1,9 +1,5 @@
 
 
-
-
-
-
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -14,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class ClaudeServiceService {
   baseUrl: string="http://api.anthropic.com/v1/messages";
- apiKey: string="Your-api-key";
+ apiKey: string="YOUR_API_KEY";
  
   base64Image: string | undefined;  // To store the base64 string of the image
 

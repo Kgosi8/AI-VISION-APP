@@ -53,9 +53,9 @@ export class AiVisionComponent {
 
   uploadImage() {
 	if (this.selectedFile) {
-		 this.claudeServiceService.analyzeImage(this.selectedFile).subscribe( (response) =>{
+		 this.claudeServiceService.analyzeImage(this.selectedFile).subscribe( (response: { description: string; }) =>{
 			this.description = response.description;
-	}, (error) => {
+	}, (error: any) => {
 		 console.error('Error analyzing image:', error);
 												        });
 													}
